@@ -310,7 +310,12 @@ _.pick.prototype.hide = function() {
  */
 _.pick.prototype.html = function(str) {
   var elem = this._item;
-  var iter = (typeof str !== "undefined") ? elem.length : 1;
+  var iter = elem.length;
+  
+  if (typeof str !== "undefined" &&
+      elem.length !== 0) {
+      iter = 1;
+  }
   
   for (var i = 0; i < iter; i++) {
     if (typeof elem[i].innerHTML !== "undefined") {
@@ -369,7 +374,12 @@ _.pick.prototype.append = function(str) {
  */
 _.pick.prototype.text = function(str) {
   var elem = this._item;
-  var iter = (typeof str !== "undefined") ? elem.length : 1;
+  var iter = elem.length;
+  
+  if (typeof str !== "undefined" &&
+      elem.length !== 0) {
+      iter = 1;
+  }
   
   for (var i = 0; i < iter; i++) {
     if (typeof elem[i].innerText !== "undefined") {
@@ -393,7 +403,12 @@ _.pick.prototype.text = function(str) {
  */
 _.pick.prototype.val = function(str) {
   var elem = this._item;
-  var iter = (typeof str !== "undefined") ? elem.length : 1;
+  var iter = elem.length;
+  
+  if (typeof str !== "undefined" &&
+      elem.length !== 0) {
+      iter = 1;
+  }
   
   for (var i = 0; i < iter; i++) {
     if (typeof elem[i].value !== "undefined") {

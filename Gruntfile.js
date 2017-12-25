@@ -2,12 +2,22 @@ module.exports = function(grunt) {
   
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    concat: {
+      options: {
+        separator: '\n',
+      },
+      dist: {
+        src: [ 'src/pick.js' ],
+        dest: 'dist/<%= pkg.name %>.js',
+      },
+    },
     uglify: {
       options: {
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
+        sourceMap : true
       },
       build: {
-        src: ['src/<%= pkg.name %>.js', 'src/pick.js'],
+        src: 'dist/<%= pkg.name %>.js',
         dest: 'dist/<%= pkg.name %>.min.js'
       }
     },
@@ -24,13 +34,13 @@ module.exports = function(grunt) {
       tasks: ['jshint']
     }
   });
-  
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   
   // Default task(s).
-  grunt.registerTask('default', ['uglify','jshint']);
+  grunt.registerTask('default', ['concat', 'jshint', 'uglify']);
   
 };

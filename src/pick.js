@@ -9,6 +9,9 @@ var _ = function(selector) {
   // Create new instance of `select`
   var ins = new window._.pick(selector);
   
+  // Selector for future use
+  ins.selected = selector;
+  
   // Set count
   ins.length = ins._item.length;
   
@@ -24,10 +27,15 @@ var _ = function(selector) {
 _.pick = function(selector) {
   if (typeof selector === "string") {
     this._item = document.querySelectorAll(selector);
-  } else if (typeof selector === "object") {
-    this._item = [selector];
+  } else if (typeof selector === "object" &&
+    selector !== null) {
+    if (typeof selector.forEach === "undefined") {
+      this._item = [selector];
+    } else {
+      this._item = selector;
+    }
   } else {
-    return false;
+    this._item = [];
   }
 };
 
@@ -309,10 +317,45 @@ _.pick.prototype.html = function(str) {
       if (typeof str !== "undefined") {
         elem[i].innerHTML = str;
       } else {
-        return elem[i].innerHTML;
+        return elem[i].outerHTML;
       }
     }
   }
+  
+  return this;
+};
+
+/**
+ * Prepend content to selected elements
+ * 
+ * @param   {String}    str    HTML Code
+ * @return  {Mixed}
+ * 
+ */
+_.pick.prototype.prepend = function(str) {
+  this._item.forEach(function(elem) {
+    if (typeof elem.innerHTML !== "undefined") {
+        elem.insertAdjacentHTML("afterbegin", str);
+    }
+  });
+  
+  return this;
+};
+
+
+/**
+ * Append content to selected elements
+ * 
+ * @param   {String}    str    HTML Code
+ * @return  {Mixed}
+ * 
+ */
+_.pick.prototype.append = function(str) {
+  this._item.forEach(function(elem) {
+    if (typeof elem.innerHTML !== "undefined") {
+        elem.insertAdjacentHTML("beforeend", str);
+    }
+  });
   
   return this;
 };
@@ -363,4 +406,102 @@ _.pick.prototype.val = function(str) {
   }
   
   return this;
+};
+
+/**
+ * Get element height
+ * 
+ * @return  {Integer}
+ * 
+ */
+_.pick.prototype.height = function() {
+  if (typeof this._item[0] === "undefined" ||
+      typeof this._item[0].offsetHeight === "undefined") return null;
+  
+  return this._item[0].offsetHeight;
+};
+
+/**
+ * Get element width
+ * 
+ * @return  {Integer}
+ * 
+ */
+_.pick.prototype.width = function() {
+  if (typeof this._item[0] === "undefined" ||
+      typeof this._item[0].offsetWidth === "undefined") return null;
+  
+  return this._item[0].offsetWidth;
+};
+
+/**
+ * Parent
+ * 
+ * @param   {String}    selector  DOM selector
+ * @return  {Mixed}
+ * 
+ */
+_.pick.prototype.parent = function(selector) {
+  if (typeof this._item[0] === "undefined" ||
+      typeof this._item[0].closest === "undefined") return null;
+  
+    if (typeof this._item[0].closest !== "undefined") {
+      if (typeof selector !== "undefined") {
+        return _(this._item[0].closest(selector));
+      } else {
+        return _(this._item[0].parentElement);
+      }
+    }
+  
+  return null;
+};
+
+/**
+ * Children
+ * 
+ * @param   {String}    selector  DOM selector
+ * @return  {Mixed}
+ * 
+ */
+_.pick.prototype.children = function(selector) {
+  if (typeof this._item[0] === "undefined" ||
+      typeof this._item[0].querySelectorAll === "undefined") return null;
+  
+    if (typeof this._item[0].querySelectorAll !== "undefined") {
+      if (typeof selector !== "undefined") {
+        return _(this._item[0].querySelectorAll(selector));
+      } else {
+        return _(this._item[0].querySelectorAll("*"));
+      }
+    }
+  
+  return null;
+};
+
+
+/**
+ * Siblings
+ * 
+ * @param   {String}    selector  DOM selector
+ * @return  {Mixed}
+ * 
+ */
+_.pick.prototype.siblings = function(selector) {
+  if (typeof this._item[0] === "undefined" ||
+      typeof this._item[0].parentElement === "undefined") return null;
+  
+  var r = [];
+  var elem = this._item[0];
+  
+  if (typeof selector === "undefined") {
+    this._item[0].parentElement.childNodes.forEach(function(e) {
+      if (e !== elem) r.push(e);
+    });
+  } else {
+    this._item[0].parentElement.querySelectorAll(selector).forEach(function(e) {
+      if (e !== elem) r.push(e);
+    });
+  }
+  
+  return _(r);
 };

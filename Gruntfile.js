@@ -7,9 +7,28 @@ module.exports = function(grunt) {
         separator: '\n',
       },
       dist: {
-        src: [ 'src/pick.js' ],
+        src: [ 'src/pick.js', 'src/dom.js' ],
         dest: 'dist/<%= pkg.name %>.js',
       },
+    },
+    replace: {
+      dist: {
+        options: {
+          patterns: [
+            {
+              match: /@VERSION/g,
+              replacement: '<%= pkg.version %>'
+            },
+            {
+              match: /@AUTHOR/g,
+              replacement: '<%= pkg.author %>'
+            }
+          ]
+        },
+        files: [
+          { expand: true, flatten: true, src: [ 'dist/<%= pkg.name %>.js' ], dest: 'dist/' }
+        ]
+      }
     },
     uglify: {
       options: {
@@ -39,8 +58,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-replace');
   
   // Default task(s).
-  grunt.registerTask('default', ['concat', 'jshint', 'uglify']);
+  grunt.registerTask('default', ['jshint', 'concat', 'replace', 'uglify']);
   
 };

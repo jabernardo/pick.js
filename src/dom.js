@@ -313,6 +313,22 @@ pick.fn.prototype.html = function(str) {
 };
 
 /**
+ * Remove element
+ * 
+ * @return  {Mixed}
+ * 
+ */
+pick.fn.prototype.remove = function() {
+  this.collection.forEach(function(elem) {
+    if (typeof elem.remove !== "undefined") {
+        elem.remove();
+    }
+  });
+  
+  return this;
+};
+
+/**
  * Prepend content to selected elements
  * 
  * @param   {String}    str    HTML Code
@@ -431,6 +447,21 @@ pick.fn.prototype.width = function() {
   return this.collection[0].offsetWidth;
 };
 
+/**
+ * Get element position
+ * 
+ * @return  {Object}
+ * 
+ */
+pick.fn.prototype.position = function() {
+  if (typeof this.collection[0] === "undefined" ||
+      typeof this.collection[0].offsetLeft === "undefined") return null;
+  
+  return {
+    left: this.collection[0].offsetLeft,
+    top: this.collection[0].offsetTop
+  };
+};
 
 /**
  * Closests

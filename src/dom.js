@@ -4,33 +4,35 @@
  * Pick Constructor
  * 
  * @param   {String}    DOM Selector
+ * @return  {Void}
  * 
  */
 pick.fn = function(selector) {
   if (typeof selector === "string") {
+    // If selector is string use `querySelectorAll` to get NodeList from document
     this.collection = document.querySelectorAll(selector);
   } else if (typeof selector === "object" &&
     selector !== null) {
+    // Make sure that Object selectors can be iterated
     if (typeof selector.forEach === "undefined") {
       this.collection = [selector];
     } else {
       this.collection = selector;
     }
   } else {
+    // Make an empty default set
     this.collection = [];
   }
 };
 
 /**
- * Selected elements length
- * 
- * @var int length  Document count
- * 
- */
-pick.fn.length = 0;
-
-/**
  * Register event
+ * 
+ * @example
+ * 
+ * _('button').on('click', function() {
+ *    // events goes here...
+ * });
  * 
  * @param   {String}    selector    Selector
  * @param   {String}    event       Event type
@@ -55,6 +57,12 @@ pick.fn.prototype.on = function(event, callback) {
 /**
  * Ready function
  * 
+ * @example
+ * 
+ * _(document).ready(function() {
+ *    // events goes here...
+ * });
+ * 
  * @param   {function}  fn  Function
  * @return  {Object}
  * 
@@ -76,6 +84,10 @@ pick.fn.prototype.ready = function(fn) {
 
 /**
  * Add class
+ * 
+ * @example
+ * 
+ * _('button').addClass('btn-medium');
  * 
  * @param   {String}    name    Name of class
  * @return  {Object}
@@ -100,6 +112,10 @@ pick.fn.prototype.addClass = function(name) {
 
 /**
  * Remove class from element
+ * 
+ * @example
+ * 
+ * _('button').removeClass('btn-medium');
  * 
  * @param   {String}    name    Class name
  * @return  {Object}
@@ -131,6 +147,10 @@ pick.fn.prototype.removeClass = function(name) {
 /**
  * Has class prototype
  * 
+ * @example
+ * 
+ * _('button').hasClass('btn-medium');
+ * 
  * @param   {String}    name    Class name
  * @return  {Boolean}
  * 
@@ -160,6 +180,10 @@ pick.fn.prototype.hasClass = function(name) {
 
 /**
  * Toggle class prototype
+ * 
+ * @example
+ * 
+ * _('button').toggleClass('btn-medium');
  * 
  * @param   {String}    name    Class name
  * @return  {Object}
@@ -204,6 +228,11 @@ pick.fn.prototype.toggleClass = function(name) {
 /**
  * Set or get attribute
  * 
+ * @example
+ * 
+ * _('button').attr('value'); // Returns value of first element
+ * _('button').attr('value', 'hello'); // Set value for first element
+ * 
  * @param   {String}    name    Attribute name
  * @param   {String}    val     Value to be set
  * @return  {Mixed}
@@ -225,6 +254,10 @@ pick.fn.prototype.attr = function(name, val) {
 
 /**
  * Toggle display
+ * 
+ * @example
+ * 
+ * _('button').toggle(); // Hide or show selected elements
  * 
  * @return  {Object}
  * 
@@ -250,6 +283,10 @@ pick.fn.prototype.toggle = function() {
 /**
  * Show elemements selected
  * 
+ * @example
+ * 
+ * _('button').show(); // Show selected elements
+ * 
  * @return  {Object}
  * 
  */
@@ -269,6 +306,10 @@ pick.fn.prototype.show = function() {
 /**
  * Hide elements selected
  * 
+ * @example
+ * 
+ * _('button').hide(); // hide selected elements
+ * 
  * @return  {Object}
  * 
  */
@@ -285,6 +326,11 @@ pick.fn.prototype.hide = function() {
 
 /**
  * Get or set innerHTML
+ * 
+ * @example
+ * 
+ * _('.container').html(); // Gets HTML content of first element
+ * _('.container').html("Hello <b>World</b>!"); // Set HTML content of selected elements
  * 
  * @param   {String}    str    HTML Code
  * @return  {Mixed}
@@ -315,6 +361,10 @@ pick.fn.prototype.html = function(str) {
 /**
  * Remove element
  * 
+ * @example
+ * 
+ * _('button').remove(); // remove elements selected
+ * 
  * @return  {Mixed}
  * 
  */
@@ -330,6 +380,10 @@ pick.fn.prototype.remove = function() {
 
 /**
  * Prepend content to selected elements
+ * 
+ * @example
+ * 
+ * _('button').prepend('[START]'); // Prepend text to selected elements text
  * 
  * @param   {String}    str    HTML Code
  * @return  {Mixed}
@@ -349,6 +403,10 @@ pick.fn.prototype.prepend = function(str) {
 /**
  * Append content to selected elements
  * 
+ * @example
+ * 
+ * _('button').append('[END]'); // Append text to selected element's text
+ * 
  * @param   {String}    str    HTML Code
  * @return  {Mixed}
  * 
@@ -365,6 +423,10 @@ pick.fn.prototype.append = function(str) {
 
 /**
  * Get or set innerText
+ * 
+ * @example
+ * 
+ * _('button').text('Click here'); // Change first element text
  * 
  * @param   {String}    str    innerText
  * @return  {Mixed}
@@ -395,6 +457,11 @@ pick.fn.prototype.text = function(str) {
 /**
  * Get or set value
  * 
+ * @example
+ * 
+ * _('button').val(); // Get current value of first element
+ * _('button').val('Submit'); // Set value of selected elements
+ * 
  * @param   {String}    str    Value
  * @return  {Mixed}
  * 
@@ -424,6 +491,10 @@ pick.fn.prototype.val = function(str) {
 /**
  * Get element height
  * 
+ * @example
+ * 
+ * _('button').height(); // Get height of element of first element
+ * 
  * @return  {Integer}
  * 
  */
@@ -437,6 +508,10 @@ pick.fn.prototype.height = function() {
 /**
  * Get element width
  * 
+ * @example
+ * 
+ * _('button').width(); // Get width of element of first element
+ * 
  * @return  {Integer}
  * 
  */
@@ -449,6 +524,10 @@ pick.fn.prototype.width = function() {
 
 /**
  * Get element position
+ * 
+ * @example
+ * 
+ * _('button').position(); // Returns offset position of first element
  * 
  * @return  {Object}
  * 
@@ -466,6 +545,10 @@ pick.fn.prototype.position = function() {
 /**
  * Closests
  * 
+ * @example
+ * 
+ * _('button').closest('p'); // Get closest element
+ * 
  * @param   {String}    selector  DOM selector
  * @return  {Mixed}
  * 
@@ -479,6 +562,11 @@ pick.fn.prototype.closest = function(selector) {
 
 /**
  * Parent
+ * 
+ * @example
+ * 
+ * _('button').parent(); // Get parent element
+ * _('button').parent('div.container'); // Get parent using selector
  * 
  * @param   {String}    selector  DOM selector
  * @return  {Mixed}
@@ -502,6 +590,11 @@ pick.fn.prototype.parent = function(selector) {
 /**
  * Children
  * 
+ * @example
+ * 
+ * _('button').children(); // Get child elements
+ * _('button').children('span'); // Get child using selector
+ * 
  * @param   {String}    selector  DOM selector
  * @return  {Mixed}
  * 
@@ -524,6 +617,11 @@ pick.fn.prototype.children = function(selector) {
 
 /**
  * Siblings
+ * 
+ * @example
+ * 
+ * _('button').siblings(); // Get siblings
+ * _('button').siblings('a'); // Get sibling using selector
  * 
  * @param   {String}    selector  DOM selector
  * @return  {Mixed}
@@ -551,6 +649,10 @@ pick.fn.prototype.siblings = function(selector) {
 
 /**
  * Find
+ * 
+ * @example
+ * 
+ * _('button').find('a'); // Get child using selector
  * 
  * @param   {String}    selector  DOM selector
  * @return  {Mixed}

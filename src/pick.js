@@ -5,7 +5,9 @@
  * @return  {Object}    window._.pick
  * 
  */
-var _ = function(selector) {
+var _, pick;
+
+pick = _ = function(selector) {
   // Create new instance of `select`
   var ins = new window._.pick(selector);
   
@@ -449,6 +451,21 @@ _.pick.prototype.width = function() {
   return this._item[0].offsetWidth;
 };
 
+
+/**
+ * Closests
+ * 
+ * @param   {String}    selector  DOM selector
+ * @return  {Mixed}
+ * 
+ */
+_.pick.prototype.closest = function(selector) {
+  if (typeof this._item[0] === "undefined" ||
+      typeof this._item[0].closest === "undefined") return null;
+  
+  return _(this._item[0].closest(selector));
+};
+
 /**
  * Parent
  * 
@@ -519,4 +536,18 @@ _.pick.prototype.siblings = function(selector) {
   }
   
   return _(r);
+};
+
+/**
+ * Find
+ * 
+ * @param   {String}    selector  DOM selector
+ * @return  {Mixed}
+ * 
+ */
+_.pick.prototype.find = function(selector) {
+  if (typeof this._item[0] === "undefined" ||
+      typeof this._item[0].querySelectorAll === "undefined") return null;
+  
+  return _(this._item[0].querySelectorAll(selector));
 };

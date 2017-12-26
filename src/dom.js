@@ -166,12 +166,7 @@ pick.fn.prototype.hasClass = function(name) {
       
       var vals = elem.getAttribute("class") ? elem.getAttribute("class").split(" ") : [];
       
-      vals.forEach(function(v) {
-        if (v === name) {
-          found = true;
-          return true;
-        }
-      });
+      found = vals.indexOf(name) >= 0 ? true : false;
     }
   });
   
@@ -201,11 +196,7 @@ pick.fn.prototype.toggleClass = function(name) {
       var vals = elem.getAttribute("class") ? elem.getAttribute("class").split(" ") : [];
       var vals_new = [];
       
-      vals.forEach(function(v) {
-        if (v === name) {
-          found = true;
-        }
-      });
+      found = vals.indexOf(name) >= 0 ? true : false;
       
       if (found) {
         vals.forEach(function(v) {

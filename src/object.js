@@ -1,0 +1,79 @@
+/* global pick _ */
+
+/**
+ * Extend Object
+ * 
+ * @param {Object} obj Object to extend
+ * @param {Object} ext Extension
+ * @return {Object}
+ * 
+ */
+pick.extend = function(obj, ext) {
+  for (var i in ext) {
+    if (ext.hasOwnProperty(i)) {
+      obj[i] = ext[i];
+    }
+  }
+   
+  return obj;
+};
+
+/**
+ * Clone
+ * 
+ * @param {Object} obj Object to clone
+ * @return  {Object}
+ * 
+ */
+pick.clone = function(obj, deep) {
+  if (typeof obj !== "object") return {};
+  
+  if (deep === true) {
+    try {
+      return JSON.parse(JSON.stringify(obj));
+    } catch(ex) {
+      return {};
+    }
+  }
+   
+  return Object.assign({}, obj);
+};
+
+/**
+ * Each function
+ * 
+ * @param {Array} array Array
+ * @return  {Object}
+ * 
+ */
+pick.each = function(array) {
+  return new pick.each.fn(array);
+};
+
+/**
+ * Constructor
+ * 
+ * @param {Array} array Array
+ * @return {null}
+ * 
+ */
+pick.each.fn = function(array) {
+  this.data = array;
+};
+
+/**
+ * Do function
+ * 
+ * @param {function} name description
+ * @return  {null}
+ * 
+ */
+pick.each.fn.prototype.do = function(callback) {
+  if (typeof callback !== "function") return;
+  
+  for (var i = 0; i < this.data.length; i++) {
+    callback(this.data[i]);
+  }
+  
+  return;
+};

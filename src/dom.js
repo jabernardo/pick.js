@@ -55,6 +55,33 @@ pick.fn.prototype.on = function(event, callback) {
 };
 
 /**
+ * Perform event
+ * 
+ * @example
+ * 
+ * _('#clickButton').perform('click');
+ * 
+ * @param {String} event Event(s) name
+ * @return {Object}
+ * 
+ */
+pick.fn.prototype.perform = function(event) {
+  if (typeof event !== "string") return;
+  
+  this.collection.forEach(function(elem){
+    event.split(" ").forEach(function(event_token) {
+      if (typeof elem.dispatchEvent === "undefined") return;
+      
+      var new_event = document.createEvent('HTMLEvents');
+      new_event.initEvent(event_token, true, false);
+      elem.dispatchEvent(new_event);
+    });
+  });
+  
+  return this;
+};
+
+/**
  * Ready function
  * 
  * @example

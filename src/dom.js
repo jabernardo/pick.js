@@ -350,6 +350,32 @@ pick.fn.prototype.html = function(str) {
 };
 
 /**
+ * Empty contents
+ * 
+ * @example
+ * 
+ * _('.container').empty(); // Empty contents of selected element
+ * 
+ * @return  {Mixed}
+ * 
+ */
+pick.fn.prototype.empty = function() {
+  var elem = this.collection;
+  
+  for (var i = 0; i < elem.length; i++) {
+    if (typeof elem[i].innerHTML !== "undefined") {
+        elem[i].innerHTML = '';
+    }
+    
+    if (typeof elem[i].innerText !== "undefined") {
+        elem[i].innerText = '';
+    }
+  }
+  
+  return this;
+};
+
+/**
  * Remove element
  * 
  * @example

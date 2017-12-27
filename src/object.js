@@ -42,6 +42,10 @@ pick.clone = function(obj, deep) {
 /**
  * Each function
  * 
+ * @example
+ * 
+ * _.each(['a', 'b', 'c'])
+ * 
  * @param {Array} array Array
  * @return  {Object}
  * 
@@ -51,7 +55,7 @@ pick.each = function(array) {
 };
 
 /**
- * Constructor
+ * Each Constructor
  * 
  * @param {Array} array Array
  * @return {null}
@@ -62,7 +66,13 @@ pick.each.fn = function(array) {
 };
 
 /**
- * Do function
+ * Each Do function
+ * 
+ * @example 
+ * 
+ * _.each(['a', 'b', 'c']).do(function(item, index) {
+ *   console.log(item, index);
+ * });
  * 
  * @param {function} name description
  * @return  {null}
@@ -72,7 +82,7 @@ pick.each.fn.prototype.do = function(callback) {
   if (typeof callback !== "function") return;
   
   for (var i = 0; i < this.data.length; i++) {
-    callback(this.data[i]);
+    callback(this.data[i], i);
   }
   
   return;

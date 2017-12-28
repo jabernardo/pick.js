@@ -173,3 +173,35 @@ pick.ajax = function(config) {
   // Send request ...
   xhr_call.send(config.dataURI);
 };
+
+/**
+ * Synchronous data fetch using XHR call
+ * 
+ * @example
+ * 
+ * var news = _.fetch('https://hacker-news.firebaseio.com/v0/item/8863.json?print=pretty');
+ * 
+ * @param {string} url URL to fetch
+ * @param {object} data Data to submit
+ * @return {mixed}
+ * 
+ */
+pick.fetch = function(url, data) {
+  var result = null;
+  
+  if (typeof data !== "undefined") {
+    data = {};
+  }
+  
+  pick.ajax({
+    "url": url,
+    "method": "GET",
+    "data": data,
+    "async": false,
+    "success": function(data) {
+      result = data;
+    }
+  });
+  
+  return result;
+};

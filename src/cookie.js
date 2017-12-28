@@ -7,6 +7,45 @@
 pick.cookie = {};
 
 /**
+ * Cookie function
+ * 
+ * @example
+ * 
+ * // Get cookie
+ * _.cookie('sample');
+ * 
+ * // Remove cookie
+ * _.cookie('sample', null);
+ * 
+ * // Create cookie
+ * * _.cookie('sample', 'hello world');
+ * 
+ * @param {string} name Cookie name
+ * @param {string} value Value
+ * @param {number} days Expiration date
+ * @param {string} path (default `/``)
+ * @return {mixed}
+ * 
+ */
+pick.cookie = function(name, value, days, path) {
+  // Get cookie
+  if (typeof value === "undefined" &&
+      typeof days === "undefined" &&
+      typeof path === "undefined" &&
+      typeof name === "string") {
+    return pick.cookie.get(name);
+  }
+  
+  // Remove cookie from current path
+  if (value === null) {
+    return pick.cookie.remove(name);
+  }
+  
+  // Create cookie
+  return pick.cookie.create(name, value, days, path);
+};
+
+/**
  * Create cookie
  * 
  * @example

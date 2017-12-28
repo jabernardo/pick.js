@@ -391,11 +391,15 @@ pick.fn.prototype.empty = function() {
   
   for (var i = 0; i < elem.length; i++) {
     if (typeof elem[i].innerHTML !== "undefined") {
-      elem[i].innerHTML = '';
+      elem[i].innerHTML = "";
     }
     
     if (typeof elem[i].innerText !== "undefined") {
-      elem[i].innerText = '';
+      elem[i].innerText = "";
+    }
+    
+    if (typeof elem[i].value !== "undefined") {
+      elem[i].value = "";
     }
   }
   

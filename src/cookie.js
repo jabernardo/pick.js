@@ -1,12 +1,6 @@
 /* global pick _ */
 
 /**
- * @var   {Object}  Cookie Library
- * 
- */
-pick.cookie = {};
-
-/**
  * Cookie function
  * 
  * @example

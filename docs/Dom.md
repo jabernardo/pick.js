@@ -161,10 +161,10 @@ of the selected elements
 ```js
 
 // Get contents
-var oldContents = _(".tab").html();
+var oldContents = _(".container").html();
 
 // Set contents
-_(".tab").html(newContents);
+ _('.container').html("Hello <b>World</b>!");
 
 
 ```

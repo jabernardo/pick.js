@@ -100,11 +100,36 @@ pick.fn.prototype.ready = function(fn) {
 
   // If document is already loaded, run method
   if (document.readyState === 'complete') {
-      return fn();
+      fn();
+      
+      return this;
   }
 
   // Otherwise, wait until document is loaded
   document.addEventListener('DOMContentLoaded', fn, false);
+  
+  return this;
+};
+
+/**
+ * Window load event
+ * 
+ * @example
+ * 
+ * _(window).load(function() {
+ *    // events goes here...
+ * });
+ * 
+ * @param   {function}  fn  Function
+ * @return  {Object}
+ * 
+ */
+pick.fn.prototype.load = function(fn) {
+  // Sanity check
+  if (typeof fn !== 'function') return;
+
+  // Wait until window is loaded
+  window.addEventListener('load', fn);
   
   return this;
 };

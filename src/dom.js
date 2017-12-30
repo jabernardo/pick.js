@@ -1,4 +1,4 @@
-/* global pick _ */
+/* global pick _ NodeList HTMLElement*/
 
 /**
  * Pick Constructor
@@ -11,8 +11,10 @@ pick.fn = function(selector) {
   if (typeof selector === "string") {
     // If selector is string use `querySelectorAll` to get NodeList from document
     this.collection = document.querySelectorAll(selector);
-  } else if (typeof selector === "object" &&
-    selector !== null) {
+  } else if (selector instanceof NodeList ||
+    selector === window ||
+    selector instanceof HTMLElement ||
+    (typeof selector === "object" && selector.hasOwnProperty("nodeName"))) {
     // Make sure that Object selectors can be iterated
     if (typeof selector.forEach === "undefined") {
       this.collection = [selector];

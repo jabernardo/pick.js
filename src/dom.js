@@ -14,7 +14,7 @@ pick.fn = function(selector) {
   } else if (selector instanceof NodeList ||
     selector === window ||
     selector instanceof HTMLElement ||
-    (typeof selector === "object" && selector.hasOwnProperty("nodeName"))) {
+    (typeof selector === "object" && selector !== null && selector.hasOwnProperty("nodeName"))) {
     // Make sure that Object selectors can be iterated
     if (typeof selector.forEach === "undefined") {
       this.collection = [selector];

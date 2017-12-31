@@ -51,6 +51,8 @@ pick.clone = function(obj, deep) {
  * 
  */
 pick.each = function(array) {
+  if (!Array.isArray(array)) return null;
+  
   return new pick.each.fn(array);
 };
 
@@ -86,4 +88,23 @@ pick.each.fn.prototype.do = function(callback) {
   }
   
   return;
+};
+
+/**
+ * Map (Return's new array mapping passed through iteration callback)
+ * 
+ * @param {function} callback Callback function
+ * @return {array}
+ * 
+ */
+pick.each.fn.prototype.map = function(callback) {
+  if (typeof callback !== "function") return;
+  
+  var data = [];
+  
+  for (var i = 0; i < this.data.length; i++) {
+    data.push(callback(this.data[i], i));
+  }
+  
+  return data;
 };

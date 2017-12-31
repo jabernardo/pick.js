@@ -63,12 +63,26 @@ pick.each(array).do(function);
 
 ```
 
-### Example
+### do
+
+Iterate's only to data
 
 ```js
 
 pick.each("abc".split("")).do(function(o, i) {
     console.log(i + ' : ' + o);
 });
+
+```
+
+### map
+
+Return's new array mapping passed through iteration callback
+
+```js
+
+$.each([1, 2, 3]).map(function(num){ return num * 2; });
+
+// Array [ 2, 4, 6 ]
 
 ```

@@ -13,6 +13,7 @@ pick.fn = function(selector) {
     this.collection = document.querySelectorAll(selector);
   } else if (selector instanceof NodeList ||
     selector === window ||
+    selector === document ||
     selector instanceof HTMLElement ||
     (typeof selector === "object" && selector !== null && selector.hasOwnProperty("nodeName"))) {
     // Make sure that Object selectors can be iterated
@@ -22,8 +23,7 @@ pick.fn = function(selector) {
       this.collection = selector;
     }
   } else {
-    // Make an empty default set
-    this.collection = [];
+    throw new Error("pick.js: Invalid selector");
   }
 };
 
@@ -149,15 +149,8 @@ pick.fn.prototype.load = function(fn) {
  */
 pick.fn.prototype.addClass = function(name) {
   this.collection.forEach(function(elem) {
-    if (typeof elem.getAttribute !== "undefined") {
-      if (!elem.hasAttribute("class")) {
-        elem.setAttribute("class", "");
-      }
-      
-      var vals = elem.getAttribute("class") ? elem.getAttribute("class").split(" ") : [];
-      vals.push(name);
-      
-      elem.setAttribute("class", vals.join(" "));
+    if (typeof elem.classList !== "undefined") {
+      elem.classList.add(name);
     }
   });
   
@@ -177,21 +170,8 @@ pick.fn.prototype.addClass = function(name) {
  */
 pick.fn.prototype.removeClass = function(name) {
   this.collection.forEach(function(elem) {
-    if (typeof elem.getAttribute !== "undefined") {
-      if (!elem.hasAttribute("class")) {
-        elem.setAttribute("class", "");
-      }
-      
-      var vals = elem.getAttribute("class") ? elem.getAttribute("class").split(" ") : [];
-      var vals_new = [];
-      
-      vals.forEach(function(v) {
-        if (v !== name) {
-          vals_new.push(v);
-        }
-      });
-      
-      elem.setAttribute("class", vals_new.join(" "));
+    if (typeof elem.classList !== "undefined") {
+      elem.classList.remove(name);
     }
   });
 
@@ -213,18 +193,32 @@ pick.fn.prototype.hasClass = function(name) {
   var found = false;
   
   this.collection.forEach(function(elem) {
-    if (typeof elem.getAttribute !== "undefined") {
-      if (!elem.hasAttribute("class")) {
-        elem.setAttribute("class", "");
+    if (typeof elem.classList !== "undefined") {
+      if (!found) {
+        found = elem.classList.contains(name);
       }
-      
-      var vals = elem.getAttribute("class") ? elem.getAttribute("class").split(" ") : [];
-      
-      found = vals.indexOf(name) >= 0 ? true : false;
     }
   });
   
   return found;
+};
+
+/**
+ * Replace class
+ *
+ * @param {string} name Class name
+ * @param {string} replacement Replacement class
+ * @return {object}
+ * 
+ */
+pick.fn.prototype.replaceClass = function(name, replacement) {
+  this.collection.forEach(function(elem) {
+    if (typeof elem.classList !== "undefined") {
+      elem.classList.replace(name, replacement);
+    }
+  });
+  
+  return this;
 };
 
 /**
@@ -240,30 +234,8 @@ pick.fn.prototype.hasClass = function(name) {
  */
 pick.fn.prototype.toggleClass = function(name) {
   this.collection.forEach(function(elem) {
-    var found = false;
-    
-    if (typeof elem.getAttribute !== "undefined") {
-      if (!elem.hasAttribute("class")) {
-        elem.setAttribute("class", "");
-      }
-      
-      var vals = elem.getAttribute("class") ? elem.getAttribute("class").split(" ") : [];
-      var vals_new = [];
-      
-      found = vals.indexOf(name) >= 0 ? true : false;
-      
-      if (found) {
-        vals.forEach(function(v) {
-          if (v !== name) {
-             vals_new.push(v);
-          }
-        });
-      } else {
-        vals_new = vals;
-        vals_new.push(name);
-      }
-      
-      elem.setAttribute("class", vals_new.join(" "));
+    if (typeof elem.classList !== "undefined") {
+      elem.classList.toggle(name);
     }
   });
   

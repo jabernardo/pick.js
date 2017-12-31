@@ -112,6 +112,17 @@ _("#tab-1").toggleClass("visible");
 
 ```
 
+## replaceClass
+
+Replace class name of selected element(s)
+
+```js
+
+_("#tab-1").replaceClass("visible", "hidden");
+
+```
+
+
 ## attr
 
 Retrieve attribute value of the first selected element

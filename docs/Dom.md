@@ -11,6 +11,30 @@ pick("#selector");
 
 ```
 
+## get
+
+Get one from picked elements
+
+```js
+
+pick("*").get();    // Get first element
+pick("*").get(5);   // 5th element found
+
+```
+
+## each
+
+For-each loop selected elements
+
+```js
+
+pick("*").each(function(elem) {
+  elem.classList.add("test");   // Vanilla JS
+  pick(elem).addClass("test2"); // Pick selector
+});
+
+```
+
 ## ready
 
 Document ready event

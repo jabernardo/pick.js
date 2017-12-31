@@ -96,3 +96,13 @@ Return's new array mapping passed through truth iteration callback
 $.each([1, 2, 3, 4, 5, 6]).filter( function(num){ return num % 2 == 0; });
 
 ```
+
+### contains
+
+Check if list contains value
+
+```js
+
+$.each([1, 2, 3, 4, 5, 6]).contains(3);
+
+```

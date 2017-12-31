@@ -130,3 +130,14 @@ pick.each.fn.prototype.filter = function(callback) {
   
   return data;
 };
+
+/**
+ * Check if list contains value
+ * 
+ * @param {mixed} val Value to look for
+ * @return {boolean}
+ * 
+ */
+pick.each.fn.prototype.contains = function(val) {
+  return this.data.indexOf(val) > -1 ? true : false;
+};

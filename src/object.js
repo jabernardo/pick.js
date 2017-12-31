@@ -93,6 +93,10 @@ pick.each.fn.prototype.do = function(callback) {
 /**
  * Map (Return's new array mapping passed through iteration callback)
  * 
+ * @example
+ * 
+ * $.each([1, 2, 3]).map(function(num){ return num * 2; });
+ * 
  * @param {function} callback Callback function
  * @return {array}
  * 
@@ -112,6 +116,10 @@ pick.each.fn.prototype.map = function(callback) {
 
 /**
  * Filter (Return's new array mapping passed through truth iteration callback)
+ * 
+ * @example
+ * 
+ * $.each([1, 2, 3, 4, 5, 6]).filter( function(num){ return num % 2 == 0; });
  * 
  * @param {function} callback Callback function
  * @return {array}
@@ -133,6 +141,10 @@ pick.each.fn.prototype.filter = function(callback) {
 
 /**
  * Check if list contains value
+ * 
+ * @example
+ * 
+ * $.each([1, 2, 3, 4, 5, 6]).contains(3);
  * 
  * @param {mixed} val Value to look for
  * @return {boolean}

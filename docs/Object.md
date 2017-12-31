@@ -1,5 +1,128 @@
 # pick.js/object
 
+## Type Checkers
+
+### is
+
+```js
+
+var k = {"a":1};
+$.is(k, k); // true
+
+```
+
+### isEmpty
+
+```js
+
+$.isEmpty({}); // true
+
+```
+
+### isElement
+
+```js
+
+$.isElement($("*").get());
+
+```
+
+### isArray
+
+```js
+
+$.isArray([]); // true
+
+```
+
+### isObject
+
+```js
+
+$.isObject({}); // true
+
+```
+
+### isFunction
+
+```js
+
+$.isFunction(function() {}); // true
+
+```
+
+### isString
+
+```js
+
+$.isString(123); // false
+
+```
+
+### isNumber
+
+```js
+
+$.isNumber("123"); // false
+
+```
+
+### isBoolean
+
+```js
+
+$.isBoolean("true"); // false
+
+```
+
+### isDate
+
+```js
+
+$.isDate(new Date()); // true
+
+```
+
+### isRegExp
+
+```js
+
+$.isRegExp(/unknown/g); // true
+
+```
+
+### isError
+
+```js
+
+$.isError(new Error("Something went wrong")); // true
+
+```
+
+### isNaN
+
+```js
+
+$.isNaN(0/0); // true
+
+```
+
+### isNull
+
+```js
+
+$.isNull(null); // true
+
+```
+
+### isUndefined
+
+```js
+
+$.isUndefined(window.sample); // true
+
+```
+
 ## extend
 
 Extend an object

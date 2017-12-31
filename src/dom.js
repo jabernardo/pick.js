@@ -63,6 +63,13 @@ pick.fn.prototype.get = function(index) {
 /**
  * Each
  * 
+ * @example
+ * 
+ * pick("*").each(function(elem) {
+ *   elem.classList.add("test");
+ *   pick(elem).addClass("test2");
+ * });
+ * 
  * @param {function} callback Callback function
  * @return {object}
  * 

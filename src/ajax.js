@@ -1,4 +1,4 @@
-/* global pick _ ActiveXObject */
+/* global pick $ ActiveXObject */
 
 /**
  * Ajax Call
@@ -21,10 +21,10 @@
  *     "lollipop-gzip": true
  *   },
  *   success: function(data, status, statusText, headers) {
- *     _('#text').val(data);
+ *     $('#text').val(data);
  *   },
  *   error: function(status, statusText) {
- *     _('#text').val(status);
+ *     $('#text').val(status);
  *   }
  * });
  * 
@@ -179,7 +179,7 @@ pick.ajax = function(config) {
  * 
  * @example
  * 
- * var news = _.fetch('https://hacker-news.firebaseio.com/v0/item/8863.json?print=pretty');
+ * var news = $.fetch('https://hacker-news.firebaseio.com/v0/item/8863.json?print=pretty');
  * 
  * @param {string} url URL to fetch
  * @param {object} data Data to submit

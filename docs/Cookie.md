@@ -7,13 +7,13 @@ Create, Get, and Remove cookies
 ```js
 
 // Create cookie
-_.cookie(name, value, expires, path);
+$.cookie(name, value, expires, path);
 
 // Get cookie
-_.cookie(name);
+$.cookie(name);
 
 // Remove cookie
-_.cookie(name,  null);
+$.cookie(name,  null);
 
 ```
 
@@ -26,7 +26,7 @@ _.cookie(name,  null);
 // value - Cookie value
 // expires - Count of days before expiration (defaults `Session`)
 // path - Cookie path (defaults `/`)
-_.cookie(name, value, expires, path);
+$.cookie(name, value, expires, path);
 
 ```
 
@@ -35,14 +35,12 @@ _.cookie(name, value, expires, path);
 ```js
 
 // Create cookie
-_.cookie('visited', '1');
+$.cookie('visited', '1');
 
 // Get cookie
-
-_.cookie('visited');
+$.cookie('visited');
 
 // Remove cookie
-
-_.cookie('visited',  null);
+$.cookie('visited',  null);
 
 ```

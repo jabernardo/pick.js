@@ -6,7 +6,7 @@ DOM Selector
 
 ```js
 
-_("#selector"); // or
+$("#selector"); // or
 pick("#selector");
 
 ```
@@ -41,7 +41,7 @@ Document ready event
 
 ```js
 
-_(document).ready(function() {
+$(document).ready(function() {
    console.log("DOM Completed"); 
 });
 
@@ -53,13 +53,13 @@ Window load event
 
 ```js
 
-_(window).load(function() {
+$(window).load(function() {
     console.log('All assets are loaded: ' + new Date());
 });
 
 // or
 
-_(window).on("load", function() {
+$(window).on("load", function() {
     console.log('All assets are loaded: ' + new Date());
 });
 
@@ -75,12 +75,12 @@ Please see reference for [DOM Events](https://www.w3schools.com/jsref/dom_obj_ev
 ```js
 
 // Single event
-_("#clickButton").on("click", function() {
+$("#clickButton").on("click", function() {
     alert("hi");
 });
 
 // Multiple events
-_("#text").on("click mouseenter", function() {
+$("#text").on("click mouseenter", function() {
    alert("boo");
 });
 
@@ -92,7 +92,7 @@ Trigger an event(s)
 
 ```js
 
-_("#clickButton").perform("click");
+$("#clickButton").perform("click");
 
 ```
 
@@ -102,7 +102,7 @@ Add class to selected element(s)
 
 ```js
 
-_("#clickButton").perform("click").addClass("clicked");
+$("#clickButton").perform("click").addClass("clicked");
 
 ```
 
@@ -112,7 +112,7 @@ Remove class to selected element(s)
 
 ```js
 
-_("#clickButton").perform("click").removeClass("not-clicked");
+$("#clickButton").perform("click").removeClass("not-clicked");
 
 ```
 
@@ -122,7 +122,7 @@ Check if one of selected element(s) has the given class
 
 ```js
 
-var clicked = _("#clickButton").hasClass("clicked");
+var clicked = $("#clickButton").hasClass("clicked");
 
 ```
 
@@ -132,7 +132,7 @@ Toggle class in selected element(s)
 
 ```js
 
-_("#tab-1").toggleClass("visible");
+$("#tab-1").toggleClass("visible");
 
 ```
 
@@ -142,7 +142,7 @@ Replace class name of selected element(s)
 
 ```js
 
-_("#tab-1").replaceClass("visible", "hidden");
+$("#tab-1").replaceClass("visible", "hidden");
 
 ```
 
@@ -153,7 +153,7 @@ Retrieve attribute value of the first selected element
 
 ```js
 
-var tab = _(".tab").attr("data-toggle");
+var tab = $(".tab").attr("data-toggle");
 
 ```
 
@@ -164,7 +164,7 @@ Hide or show selected element(s)
 
 ```js
 
-_(".tab").toggle();
+$(".tab").toggle();
 
 ```
 
@@ -174,7 +174,7 @@ Show selected element(s)
 
 ```js
 
-_(".tab").show();
+$(".tab").show();
 
 ```
 
@@ -184,7 +184,7 @@ Hide selected element(s)
 
 ```js
 
-_(".tab").hide();
+$(".tab").hide();
 
 ```
 
@@ -196,10 +196,10 @@ of the selected elements
 ```js
 
 // Get contents
-var oldContents = _(".container").html();
+var oldContents = $(".container").html();
 
 // Set contents
- _('.container').html("Hello <b>World</b>!");
+ $('.container').html("Hello <b>World</b>!");
 
 
 ```
@@ -210,7 +210,7 @@ Clears innerHTML, innerText, or value
 
 ```js
 
-_("text").empty();
+$("text").empty();
 
 ```
 
@@ -220,7 +220,7 @@ Remove selected element(s)
 
 ```js
 
-_("button").remove();
+$("button").remove();
 
 ```
 
@@ -230,7 +230,7 @@ Prepend adjacent to innerHTML
 
 ```js
 
-_("button").prepend("[");
+$("button").prepend("[");
 
 ```
 
@@ -240,7 +240,7 @@ Append adjacent to innerHTML
 
 ```js
 
-_("button").append("]");
+$("button").append("]");
 
 ```
 
@@ -251,10 +251,10 @@ Get innerText of first selected element or set innerText of selected element(s)
 ```js
 
 // Get text
-var msg = _("button").text();
+var msg = $("button").text();
 
 // Set text
-_("button").text("Click here");
+$("button").text("Click here");
 
 ```
 
@@ -265,10 +265,10 @@ Get value of first selected element or set value of selected element(s)
 ```js
 
 // Get value
-var val = _("button").val();
+var val = $("button").val();
 
 // Set value
-_("button").val("Clicked");
+$("button").val("Clicked");
 
 ```
 
@@ -278,8 +278,8 @@ Get width / height of first selected element
 
 ```js
 
-var width = _("button").width();
-var height = _("button").height();
+var width = $("button").width();
+var height = $("button").height();
 
 ```
 
@@ -289,7 +289,7 @@ Get position of first selected element
 
 ```js
 
-_("button").position();
+$("button").position();
 
 // Object { left: 542, top: 152 }
 
@@ -301,7 +301,7 @@ Get closest elements using selector
 
 ```js
 
-var inputs = _("button").closest("input");
+var inputs = $("button").closest("input");
 
 ```
 ## parent
@@ -310,8 +310,8 @@ Get parent element (using selector or not)
 
 ```js
 
-var form = _("button").parent("form");
-var container = _("button").parent();
+var form = $("button").parent("form");
+var container = $("button").parent();
 
 ```
 ## children
@@ -320,7 +320,7 @@ Get child elements
 
 ```js
 
-var inputs = _("#form1").children("input");
+var inputs = $("#form1").children("input");
 
 ```
 
@@ -330,7 +330,7 @@ Get siblings
 
 ```js
 
-var inputs = _("#name").siblings("input");
+var inputs = $("#name").siblings("input");
 
 ```
 
@@ -340,6 +340,6 @@ Find an child element
 
 ```js
 
-var inputs = _("#form1").find("input");
+var inputs = $("#form1").find("input");
 
 ```

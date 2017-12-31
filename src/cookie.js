@@ -1,4 +1,4 @@
-/* global pick _ */
+/* global pick $ */
 
 /**
  * Cookie function
@@ -6,13 +6,13 @@
  * @example
  * 
  * // Get cookie
- * _.cookie('sample');
+ * $.cookie('sample');
  * 
  * // Remove cookie
- * _.cookie('sample', null);
+ * $.cookie('sample', null);
  * 
  * // Create cookie
- * * _.cookie('sample', 'hello world');
+ * $.cookie('sample', 'hello world');
  * 
  * @param {string} name Cookie name
  * @param {string} value Value

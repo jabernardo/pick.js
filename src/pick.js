@@ -1,19 +1,19 @@
 "uses strict";
 
-var _, pick;
+var $, pick;
 
 /**
  * Pick Object
  * 
  * @example
  * 
- * _('#clickButton')
+ * $('#clickButton')
  * 
  * @param   {String}    DOM Selector
  * @return  {Object}    window.pick.fn
  * 
  */
-_ = pick = function(selector) {
+$ = pick = function(selector) {
   // Create new instance of `select`
   var ins = new pick.fn(selector);
 

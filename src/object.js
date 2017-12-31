@@ -1,4 +1,4 @@
-/* global pick _ */
+/* global pick $ */
 
 /**
  * Extend Object
@@ -44,7 +44,7 @@ pick.clone = function(obj, deep) {
  * 
  * @example
  * 
- * _.each(['a', 'b', 'c'])
+ * $.each(['a', 'b', 'c'])
  * 
  * @param {Array} array Array
  * @return  {Object}
@@ -70,7 +70,7 @@ pick.each.fn = function(array) {
  * 
  * @example 
  * 
- * _.each(['a', 'b', 'c']).do(function(item, index) {
+ * $.each(['a', 'b', 'c']).do(function(item, index) {
  *   console.log(item, index);
  * });
  * 

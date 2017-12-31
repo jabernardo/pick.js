@@ -1,4 +1,4 @@
-/* global pick _ NodeList HTMLElement */
+/* global pick $ NodeList HTMLElement */
 
 /**
  * Pick Constructor
@@ -89,7 +89,7 @@ pick.fn.prototype.each = function(callback) {
  * 
  * @example
  * 
- * _('button').on('click', function() {
+ * $('button').on('click', function() {
  *    // events goes here...
  * });
  * 
@@ -118,7 +118,7 @@ pick.fn.prototype.on = function(event, callback) {
  * 
  * @example
  * 
- * _('#clickButton').perform('click');
+ * $('#clickButton').perform('click');
  * 
  * @param {String} event Event(s) name
  * @return {Object}
@@ -145,7 +145,7 @@ pick.fn.prototype.perform = function(event) {
  * 
  * @example
  * 
- * _(document).ready(function() {
+ * $(document).ready(function() {
  *    // events goes here...
  * });
  * 
@@ -175,7 +175,7 @@ pick.fn.prototype.ready = function(fn) {
  * 
  * @example
  * 
- * _(window).load(function() {
+ * $(window).load(function() {
  *    // events goes here...
  * });
  * 
@@ -198,7 +198,7 @@ pick.fn.prototype.load = function(fn) {
  * 
  * @example
  * 
- * _('button').addClass('btn-medium');
+ * $('button').addClass('btn-medium');
  * 
  * @param   {String}    name    Name of class
  * @return  {Object}
@@ -219,7 +219,7 @@ pick.fn.prototype.addClass = function(name) {
  * 
  * @example
  * 
- * _('button').removeClass('btn-medium');
+ * $('button').removeClass('btn-medium');
  * 
  * @param   {String}    name    Class name
  * @return  {Object}
@@ -240,7 +240,7 @@ pick.fn.prototype.removeClass = function(name) {
  * 
  * @example
  * 
- * _('button').hasClass('btn-medium');
+ * $('button').hasClass('btn-medium');
  * 
  * @param   {String}    name    Class name
  * @return  {Boolean}
@@ -283,7 +283,7 @@ pick.fn.prototype.replaceClass = function(name, replacement) {
  * 
  * @example
  * 
- * _('button').toggleClass('btn-medium');
+ * $('button').toggleClass('btn-medium');
  * 
  * @param   {String}    name    Class name
  * @return  {Object}
@@ -304,8 +304,8 @@ pick.fn.prototype.toggleClass = function(name) {
  * 
  * @example
  * 
- * _('button').attr('value'); // Returns value of first element
- * _('button').attr('value', 'hello'); // Set value for first element
+ * $('button').attr('value'); // Returns value of first element
+ * $('button').attr('value', 'hello'); // Set value for first element
  * 
  * @param   {String}    name    Attribute name
  * @param   {String}    val     Value to be set
@@ -331,7 +331,7 @@ pick.fn.prototype.attr = function(name, val) {
  * 
  * @example
  * 
- * _('button').toggle(); // Hide or show selected elements
+ * $('button').toggle(); // Hide or show selected elements
  * 
  * @return  {Object}
  * 
@@ -359,7 +359,7 @@ pick.fn.prototype.toggle = function() {
  * 
  * @example
  * 
- * _('button').show(); // Show selected elements
+ * $('button').show(); // Show selected elements
  * 
  * @return  {Object}
  * 
@@ -382,7 +382,7 @@ pick.fn.prototype.show = function() {
  * 
  * @example
  * 
- * _('button').hide(); // hide selected elements
+ * $('button').hide(); // hide selected elements
  * 
  * @return  {Object}
  * 
@@ -403,8 +403,8 @@ pick.fn.prototype.hide = function() {
  * 
  * @example
  * 
- * _('.container').html(); // Gets HTML content of first element
- * _('.container').html("Hello <b>World</b>!"); // Set HTML content of selected elements
+ * $('.container').html(); // Gets HTML content of first element
+ * $('.container').html("Hello <b>World</b>!"); // Set HTML content of selected elements
  * 
  * @param   {String}    str    HTML Code
  * @return  {Mixed}
@@ -437,7 +437,7 @@ pick.fn.prototype.html = function(str) {
  * 
  * @example
  * 
- * _('.container').empty(); // Empty contents of selected element
+ * $('.container').empty(); // Empty contents of selected element
  * 
  * @return  {Mixed}
  * 
@@ -467,7 +467,7 @@ pick.fn.prototype.empty = function() {
  * 
  * @example
  * 
- * _('button').remove(); // remove elements selected
+ * $('button').remove(); // remove elements selected
  * 
  * @return  {Mixed}
  * 
@@ -487,7 +487,7 @@ pick.fn.prototype.remove = function() {
  * 
  * @example
  * 
- * _('button').prepend('[START]'); // Prepend text to selected elements text
+ * $('button').prepend('[START]'); // Prepend text to selected elements text
  * 
  * @param   {String}    str    HTML Code
  * @return  {Mixed}
@@ -509,7 +509,7 @@ pick.fn.prototype.prepend = function(str) {
  * 
  * @example
  * 
- * _('button').append('[END]'); // Append text to selected element's text
+ * $('button').append('[END]'); // Append text to selected element's text
  * 
  * @param   {String}    str    HTML Code
  * @return  {Mixed}
@@ -530,7 +530,7 @@ pick.fn.prototype.append = function(str) {
  * 
  * @example
  * 
- * _('button').text('Click here'); // Change first element text
+ * $('button').text('Click here'); // Change first element text
  * 
  * @param   {String}    str    innerText
  * @return  {Mixed}
@@ -563,8 +563,8 @@ pick.fn.prototype.text = function(str) {
  * 
  * @example
  * 
- * _('button').val(); // Get current value of first element
- * _('button').val('Submit'); // Set value of selected elements
+ * $('button').val(); // Get current value of first element
+ * $('button').val('Submit'); // Set value of selected elements
  * 
  * @param   {String}    str    Value
  * @return  {Mixed}
@@ -597,7 +597,7 @@ pick.fn.prototype.val = function(str) {
  * 
  * @example
  * 
- * _('button').height(); // Get height of element of first element
+ * $('button').height(); // Get height of element of first element
  * 
  * @return  {Integer}
  * 
@@ -614,7 +614,7 @@ pick.fn.prototype.height = function() {
  * 
  * @example
  * 
- * _('button').width(); // Get width of element of first element
+ * $('button').width(); // Get width of element of first element
  * 
  * @return  {Integer}
  * 
@@ -631,7 +631,7 @@ pick.fn.prototype.width = function() {
  * 
  * @example
  * 
- * _('button').position(); // Returns offset position of first element
+ * $('button').position(); // Returns offset position of first element
  * 
  * @return  {Object}
  * 
@@ -651,7 +651,7 @@ pick.fn.prototype.position = function() {
  * 
  * @example
  * 
- * _('button').closest('p'); // Get closest element
+ * $('button').closest('p'); // Get closest element
  * 
  * @param   {String}    selector  DOM selector
  * @return  {Mixed}
@@ -661,7 +661,7 @@ pick.fn.prototype.closest = function(selector) {
   if (typeof this.collection[0] === "undefined" ||
       typeof this.collection[0].closest === "undefined") return null;
   
-  return _(this.collection[0].closest(selector));
+  return $(this.collection[0].closest(selector));
 };
 
 /**
@@ -669,8 +669,8 @@ pick.fn.prototype.closest = function(selector) {
  * 
  * @example
  * 
- * _('button').parent(); // Get parent element
- * _('button').parent('div.container'); // Get parent using selector
+ * $('button').parent(); // Get parent element
+ * $('button').parent('div.container'); // Get parent using selector
  * 
  * @param   {String}    selector  DOM selector
  * @return  {Mixed}
@@ -682,9 +682,9 @@ pick.fn.prototype.parent = function(selector) {
   
     if (typeof this.collection[0].closest !== "undefined") {
       if (typeof selector !== "undefined") {
-        return _(this.collection[0].closest(selector));
+        return $(this.collection[0].closest(selector));
       } else {
-        return _(this.collection[0].parentElement);
+        return $(this.collection[0].parentElement);
       }
     }
   
@@ -696,8 +696,8 @@ pick.fn.prototype.parent = function(selector) {
  * 
  * @example
  * 
- * _('button').children(); // Get child elements
- * _('button').children('span'); // Get child using selector
+ * $('button').children(); // Get child elements
+ * $('button').children('span'); // Get child using selector
  * 
  * @param   {String}    selector  DOM selector
  * @return  {Mixed}
@@ -709,9 +709,9 @@ pick.fn.prototype.children = function(selector) {
   
     if (typeof this.collection[0].querySelectorAll !== "undefined") {
       if (typeof selector !== "undefined") {
-        return _(this.collection[0].querySelectorAll(selector));
+        return $(this.collection[0].querySelectorAll(selector));
       } else {
-        return _(this.collection[0].querySelectorAll("*"));
+        return $(this.collection[0].querySelectorAll("*"));
       }
     }
   
@@ -724,8 +724,8 @@ pick.fn.prototype.children = function(selector) {
  * 
  * @example
  * 
- * _('button').siblings(); // Get siblings
- * _('button').siblings('a'); // Get sibling using selector
+ * $('button').siblings(); // Get siblings
+ * $('button').siblings('a'); // Get sibling using selector
  * 
  * @param   {String}    selector  DOM selector
  * @return  {Mixed}
@@ -748,7 +748,7 @@ pick.fn.prototype.siblings = function(selector) {
     });
   }
   
-  return _(r);
+  return $(r);
 };
 
 /**
@@ -756,7 +756,7 @@ pick.fn.prototype.siblings = function(selector) {
  * 
  * @example
  * 
- * _('button').find('a'); // Get child using selector
+ * $('button').find('a'); // Get child using selector
  * 
  * @param   {String}    selector  DOM selector
  * @return  {Mixed}
@@ -766,5 +766,5 @@ pick.fn.prototype.find = function(selector) {
   if (typeof this.collection[0] === "undefined" ||
       typeof this.collection[0].querySelectorAll === "undefined") return null;
   
-  return _(this.collection[0].querySelectorAll(selector));
+  return $(this.collection[0].querySelectorAll(selector));
 };

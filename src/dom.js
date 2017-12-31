@@ -28,6 +28,39 @@ pick.fn = function(selector) {
 };
 
 /**
+ * @var {mixed} Collection
+ * 
+ */
+pick.fn.prototype.collection = [];
+
+/**
+ * Get element from collection
+ * 
+ * @example
+ * 
+ * pick("#clickButton").get();
+ * pick("*").get(2);
+ * 
+ * @param {number} index Element index
+ * @return {mixed}
+ * 
+ */
+pick.fn.prototype.get = function(index) {
+  if (typeof this.collection === "object" &&
+    typeof this.collection[index] !== "undefined") {
+    return this.collection[index];
+  }
+  
+  if (typeof this.collection === "object" &&
+      typeof this.collection[0] !== "undefined" &&
+      typeof index === "undefined") {
+    return this.collection[0];
+  }
+  
+  return null;
+};
+
+/**
  * Register event
  * 
  * @example

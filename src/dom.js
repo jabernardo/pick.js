@@ -1,4 +1,4 @@
-/* global pick _ NodeList HTMLElement*/
+/* global pick _ NodeList HTMLElement */
 
 /**
  * Pick Constructor
@@ -58,6 +58,23 @@ pick.fn.prototype.get = function(index) {
   }
   
   return null;
+};
+
+/**
+ * Each
+ * 
+ * @param {function} callback Callback function
+ * @return {object}
+ * 
+ */
+pick.fn.prototype.each = function(callback) {
+  if (typeof callback !== "function") return null;
+  
+  this.collection.forEach(function(elem) {
+      callback(elem);
+  });
+  
+  return this;
 };
 
 /**

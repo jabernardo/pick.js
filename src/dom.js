@@ -3,7 +3,7 @@
 /**
  * Pick Constructor
  * 
- * @param   {String}    DOM Selector
+ * @param   {String}    selector DOM Selector
  * @return  {Void}
  * 
  */

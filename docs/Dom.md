@@ -35,6 +35,16 @@ pick("*").each(function(elem) {
 
 ```
 
+## raw
+
+Get raw collection
+
+```js
+
+$("*").raw();
+
+```
+
 ## ready
 
 Document ready event

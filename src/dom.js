@@ -85,6 +85,20 @@ pick.fn.prototype.each = function(callback) {
 };
 
 /**
+ * Get raw collection
+ * 
+ * @example
+ * 
+ * $("*").raw();
+ * 
+ * @return  {mixed}
+ * 
+ */
+pick.fn.prototype.raw = function() {
+  return this.collection;
+};
+
+/**
  * Register event
  * 
  * @example

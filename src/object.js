@@ -108,3 +108,25 @@ pick.each.fn.prototype.map = function(callback) {
   
   return data;
 };
+
+
+/**
+ * Filter (Return's new array mapping passed through truth iteration callback)
+ * 
+ * @param {function} callback Callback function
+ * @return {array}
+ * 
+ */
+pick.each.fn.prototype.filter = function(callback) {
+  if (typeof callback !== "function") return;
+  
+  var data = [];
+  
+  for (var i = 0; i < this.data.length; i++) {
+    if (callback(this.data[i], i)) {
+      data.push(this.data[i]);
+    }
+  }
+  
+  return data;
+};

@@ -10,7 +10,11 @@
 pick.fn = function(selector) {
   if (typeof selector === "string") {
     // If selector is string use `querySelectorAll` to get NodeList from document
-    this.collection = document.querySelectorAll(selector);
+    try {
+      this.collection = document.querySelectorAll(selector);
+    } catch (Exception) {
+      console.error("%cpick.js [dom]: %cinvalid selector.", "color: red; font-weight: bold;", "color: black");
+    }
   } else if (selector instanceof NodeList ||
     selector === window ||
     selector === document ||
@@ -23,7 +27,7 @@ pick.fn = function(selector) {
       this.collection = selector;
     }
   } else {
-    throw new Error("pick.js: Invalid selector");
+    console.error("%cpick.js [dom]: %cinvalid selector.", "color: red; font-weight: bold;", "color: black");
   }
 };
 

@@ -33,7 +33,7 @@
  */
 pick.ajax = function(config) {
   if (typeof config != "object") {
-    console.log("%cpick.js [ajax]: %cincorrect parameter.", "color: red; font-weight: bold;", "color: black");
+    console.error("%cpick.js [ajax]: %cincorrect parameter.", "color: red; font-weight: bold;", "color: black");
     return;
   }
 
@@ -41,7 +41,7 @@ pick.ajax = function(config) {
    * config.url is required!!!
    */
   if (typeof config.url === typeof undefined) {
-    console.log("%cpick.js [ajax]: %cno url to be openned.", "color: red; font-weight: bold;", "color: black");
+    console.error("%cpick.js [ajax]: %cno url to be openned.", "color: red; font-weight: bold;", "color: black");
     return;
   }
 
@@ -102,7 +102,7 @@ pick.ajax = function(config) {
   } else if (typeof XMLHttpRequest !== typeof undefined) {
     xhr_call = new XMLHttpRequest();
   } else {
-    console.log("%cpick.js [ajax]: %cthis functionality wasn\"t supported by your browser.", "color: red; font-weight: bold;", "color: black");
+    console.error("%cpick.js [ajax]: %cthis functionality wasn\"t supported by your browser.", "color: red; font-weight: bold;", "color: black");
     return;
   }
 

@@ -155,59 +155,6 @@ pick.fn.prototype.perform = function(event) {
 };
 
 /**
- * Ready function
- * 
- * @example
- * 
- * $(document).ready(function() {
- *    // events goes here...
- * });
- * 
- * @param   {function}  fn  Function
- * @return  {Object}
- * 
- */
-pick.fn.prototype.ready = function(fn) {
-  // Sanity check
-  if (typeof fn !== 'function') return;
-
-  // If document is already loaded, run method
-  if (document.readyState === 'complete') {
-      fn();
-      
-      return this;
-  }
-
-  // Otherwise, wait until document is loaded
-  document.addEventListener('DOMContentLoaded', fn, false);
-  
-  return this;
-};
-
-/**
- * Window load event
- * 
- * @example
- * 
- * $(window).load(function() {
- *    // events goes here...
- * });
- * 
- * @param   {function}  fn  Function
- * @return  {Object}
- * 
- */
-pick.fn.prototype.load = function(fn) {
-  // Sanity check
-  if (typeof fn !== 'function') return;
-
-  // Wait until window is loaded
-  window.addEventListener('load', fn);
-  
-  return this;
-};
-
-/**
  * Add class
  * 
  * @example

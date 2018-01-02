@@ -96,6 +96,26 @@ $("#text").on("click mouseenter", function() {
 
 ```
 
+### document load
+
+```js
+
+$(document).on("DOMContentLoaded", function() {
+   console.log("DOM Completed."); 
+});
+
+```
+
+### window load
+
+```js
+
+$(window).on("load", function() {
+    console.log("All assets are loaded");
+});
+
+```
+
 ## perform
 
 Trigger an event(s)

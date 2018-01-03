@@ -160,6 +160,14 @@ Clone object
 
 ```js
 
+pick.clone(obj, isDeep);
+
+```
+
+### Example
+
+```js
+
 var a = {
     a: {
         b: 2
@@ -172,22 +180,6 @@ b.a = 1;
 
 // a = { a: { b: 2 } };
 // b = { a: 1 };
-
-```
-
-### Example
-
-```js
-
-var a = {
-    a: 1
-};
-
-// Normal copy
-var b = pick.clone(a);
-
-// Deep copy
-var c = pick.clone(a, true);
 
 ```
 

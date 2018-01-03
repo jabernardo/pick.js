@@ -23,7 +23,7 @@ $.isEmpty({}); // true
 
 ```js
 
-$.isElement($("*").get());
+$.isElement($("*").get()); // true
 
 ```
 
@@ -133,7 +133,7 @@ pick.extend(obj, ext);
 
 ```
 
-### Sample
+### Example
 
 ```js
 
@@ -147,6 +147,11 @@ var b = {
 
 var c = pick.extend(a, b);
 
+// {
+//    a: 1,
+//    b: 2
+// }
+
 ```
 
 ## clone
@@ -155,7 +160,18 @@ Clone object
 
 ```js
 
-pick.clone(obj, deep);
+var a = {
+    a: {
+        b: 2
+    }
+};
+
+var b = pick.clone(a, true);
+
+b.a = 1;
+
+// a = { a: { b: 2 } };
+// b = { a: 1 };
 
 ```
 
@@ -196,6 +212,10 @@ pick.each("abc".split("")).do(function(o, i) {
     console.log(i + ' : ' + o);
 });
 
+// 0 : a
+// 1 : b
+// 2 : c
+
 ```
 
 ### map
@@ -218,6 +238,8 @@ Return's new array mapping passed through truth iteration callback
 
 $.each([1, 2, 3, 4, 5, 6]).filter( function(num){ return num % 2 == 0; });
 
+// (3) [2, 4, 6]
+
 ```
 
 ### contains
@@ -226,6 +248,6 @@ Check if list contains value
 
 ```js
 
-$.each([1, 2, 3, 4, 5, 6]).contains(3);
+$.each([1, 2, 3, 4, 5, 6]).contains(3); // true
 
 ```

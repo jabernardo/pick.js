@@ -1,4 +1,4 @@
-/* global pick $ NodeList HTMLElement */
+/* global pick $ Node NodeList HTMLElement */
 
 /**
  * Pick Constructor
@@ -461,7 +461,12 @@ pick.fn.prototype.remove = function() {
 pick.fn.prototype.prepend = function(str) {
   this.collection.forEach(function(elem) {
     if (typeof elem.innerHTML !== "undefined") {
-        elem.insertAdjacentHTML("afterbegin", str);
+        if (str instanceof HTMLElement ||
+            str instanceof Node) {
+          elem.prepend(str);
+        } else {
+          elem.insertAdjacentHTML("afterbegin", str);
+        }
     }
   });
   
@@ -476,14 +481,19 @@ pick.fn.prototype.prepend = function(str) {
  * 
  * $('button').append('[END]'); // Append text to selected element's text
  * 
- * @param   {String}    str    HTML Code
+ * @param   {Mixed}    str    HTML Code
  * @return  {Mixed}
  * 
  */
 pick.fn.prototype.append = function(str) {
   this.collection.forEach(function(elem) {
     if (typeof elem.innerHTML !== "undefined") {
-        elem.insertAdjacentHTML("beforeend", str);
+        if (str instanceof HTMLElement ||
+            str instanceof Node) {
+          elem.append(str);
+        } else {
+          elem.insertAdjacentHTML("beforeend", str);
+        }
     }
   });
   

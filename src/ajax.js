@@ -159,7 +159,7 @@ pick.ajax = function(config) {
         var header = parts.shift();
         var value = parts.join(': ');
         
-        headers_map[header] = value;
+        headers_map[header.toLowerCase()] = value;
       });
       
       // Success callback
@@ -204,4 +204,34 @@ pick.fetch = function(url, data) {
   });
   
   return result;
+};
+
+/**
+ * Get Script
+ * 
+ * @param {string} url URL
+ * @param {function} callback Callback
+ * @return {undefined}
+ * 
+ */
+pick.getScript = function(url, callback) {
+  pick.ajax({
+    "url": url,
+    "method": "GET",
+    "success": function(data, status, statusText, headers) {
+      if (headers["content-type"] &&
+          /(text|application)\/javascript/gi.test(headers["content-type"]) > -1) {
+        (window.execScript ||
+          function (data) {
+            window["eval"].call(window, data);
+            if (typeof callback === "function") {
+              callback();
+            }
+        })(data);
+      }
+    },
+    "error": function() {
+      console.error("%cpick.js [ajax]: %cerror on getting external script.", "color: red; font-weight: bold;", "color: black");
+    }
+  });
 };

@@ -114,3 +114,24 @@ var news = $.fetch("https://hacker-news.firebaseio.com/v0/item/8863.json?print=p
 // Object { by: "dhouston", descendants: 71, id: 8863, kids: […], score: 110, time: 1175714200, title: "My YC app: Dropbox - Throw away your USB drive", type: "story", url: "http://www.getdropbox.com/u/2/screencast.html" }
 
 ```
+
+
+### getScript
+
+Get external javascript
+
+```js
+
+pick.getScript(url, callback)
+
+```
+
+### Example
+
+```js
+
+$.getScript('https://jabernardo.github.io/static/js/ru.js', function() { 
+    console.log(typeof window.ru);
+});
+
+```

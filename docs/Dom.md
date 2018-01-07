@@ -22,6 +22,16 @@ pick("*").get(5);   // 5th element found
 
 ```
 
+## exists
+
+Check if selected elements exists
+
+```js
+
+pick("#doesntExists").exists(); // false
+
+```
+
 ## each
 
 For-each loop selected elements

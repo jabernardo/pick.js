@@ -65,6 +65,16 @@ pick.fn.prototype.get = function(index) {
 };
 
 /**
+ * Check if selected elements exists
+ * 
+ * @return  {boolean}
+ * 
+ */
+pick.fn.prototype.exists = function() {
+  return (this.collection.length) ? true : false;
+};
+
+/**
  * Each
  * 
  * @example

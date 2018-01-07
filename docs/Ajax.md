@@ -115,8 +115,49 @@ var news = $.fetch("https://hacker-news.firebaseio.com/v0/item/8863.json?print=p
 
 ```
 
+## get
 
-### getScript
+Send GET (asynchonous) request
+
+```js
+
+pick.get(url, data, callback);
+
+```
+
+### Example
+
+```js
+
+pick.get("https://hacker-news.firebaseio.com/v0/item/8863.json?print=pretty", {}, data => {
+    console.log(data.by);
+});
+
+```
+
+## post
+
+Send POST (asynchonous) request
+
+```js
+
+pick.post(url, data, callback);
+
+```
+
+### Example
+
+```js
+
+pick.post("https://hacker-news.firebaseio.com/v0/item/8863.json?print=pretty", {}, data => {
+    console.log(data.by);
+});
+
+// will throw error message though
+
+```
+
+## getScript
 
 Get external javascript
 

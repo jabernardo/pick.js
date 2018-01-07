@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+    <head>
+        <title>pick.js</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1 id="header-quote">Welcome to pick.js!</h1>
+        <button id="get-quote">Get Quote</button>
+    </body>
+    <script type="text/javascript" src="../dist/pick.min.js"></script>
+    <script type="text/javascript">
+        /* global $ pick */
+        
+        var quotes = [
+                "When in doubt, use brute force. -- Ken Thompson",
+                "Linux: The choice of a GNU generation",
+                "Linux is addictive, I'm hooked! -- MaDsen Wikholm's .sig",
+                "The difference between genius and stupidity is that genius has it's limits. -- Albert Einstein"
+            ];
+        
+        // window.load
+        $(window).on("load", function() {
+            console.log("All assets are loaded");
+        });
+        
+        // document.ready
+        $(document).on("DOMContentLoaded", function() {
+           console.log("DOM Completed."); 
+        });
+        
+        // register events
+        $(document).on("DOMContentLoaded", function() {
+            $("#get-quote").on("click", function() {
+                var quote_index = Math.floor(Math.random() * quotes.length);
+                $("#header-quote").text(quotes[quote_index]);
+                $("#header-quote").attr("quote-index", quote_index);
+            });
+        });
+    </script>
+</html>

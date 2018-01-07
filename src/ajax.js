@@ -14,7 +14,7 @@
  *     pwd: 'pwd1q2'
  *   },
  *   data: {
- *     name: 'aldricffh'
+ *     name: 'aldrich'
  *   },
  *   headers: {
  *     sugar: "ae0z9iHQI+VnDCN7umgQBg==",
@@ -204,6 +204,48 @@ pick.fetch = function(url, data) {
   });
   
   return result;
+};
+
+/**
+ * GET Request
+ * 
+ * @param {string} url URL
+ * @param {object} data Data to be sent
+ * @param {function} callback Success callback
+ * @return {undefined}
+ * 
+ */
+pick.get = function(url, data, callback) {
+  pick.ajax({
+    "url": url,
+    "method": "GET",
+    "data": data,
+    "success": callback,
+    "error": function(status, statusText) {
+      console.error("%cpick.js [ajax]: %cerror " + status, "color: red; font-weight: bold;", "color: black");
+    }
+  });
+};
+
+/**
+ * POST Request
+ * 
+ * @param {string} url URL
+ * @param {object} data Data to be sent
+ * @param {function} callback Success callback
+ * @return {undefined}
+ * 
+ */
+pick.post = function(url, data, callback) {
+  pick.ajax({
+    "url": url,
+    "method": "POST",
+    "data": data,
+    "success": callback,
+    "error": function(status, statusText) {
+      console.error("%cpick.js [ajax]: %cerror " + status, "color: red; font-weight: bold;", "color: black");
+    }
+  });
 };
 
 /**

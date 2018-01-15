@@ -11,6 +11,7 @@ pick.fn = function(selector) {
   if (typeof selector === "string") {
     // If selector is string use `querySelectorAll` to get NodeList from document
     try {
+      this.selector = selector;
       this.collection = document.querySelectorAll(selector);
     } catch (Exception) {
       console.error("%cpick.js [dom]: %cinvalid selector.", "color: red; font-weight: bold;", "color: black");
@@ -20,12 +21,18 @@ pick.fn = function(selector) {
     selector === document ||
     selector instanceof HTMLElement ||
     (typeof selector === "object" && selector !== null && selector.hasOwnProperty("nodeName"))) {
+    
+    this.selector = selector;
+    
     // Make sure that Object selectors can be iterated
     if (typeof selector.forEach === "undefined") {
       this.collection = [selector];
     } else {
       this.collection = selector;
     }
+  } else if (selector instanceof pick.fn) {
+    this.selector = selector;
+    this.collection = selector.collection;
   } else {
     console.error("%cpick.js [dom]: %cinvalid selector.", "color: red; font-weight: bold;", "color: black");
   }
@@ -36,6 +43,12 @@ pick.fn = function(selector) {
  * 
  */
 pick.fn.prototype.collection = [];
+
+/**
+ * @var {mixed} Selector
+ * 
+ */
+pick.fn.prototype.selector = null;
 
 /**
  * Get element from collection
